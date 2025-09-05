@@ -12,7 +12,16 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors());
+const corsOptions = {
+  origin: [
+    'http://localhost:3000', // Your local development frontend
+    'https://split-it-new.netlify.app/' // Your live Netlify frontend URL
+  ],
+  credentials: true, // This is crucial if you use cookies/tokens
+  optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 const PORT = process.env.PORT;
