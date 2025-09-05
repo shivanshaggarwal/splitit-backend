@@ -14,10 +14,13 @@ const app = express();
 
 const corsOptions = {
   origin: [
-    'http://localhost:3000', // Your local development frontend
-    'https://split-it-new.netlify.app/' // Your live Netlify frontend URL
+    'http://localhost:3000',
+    'https://split-it-new.netlify.app',
+    'https://split-it-new.netlify.ap/p'
   ],
-  credentials: true, // This is crucial if you use cookies/tokens
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
   optionsSuccessStatus: 200
 };
 
