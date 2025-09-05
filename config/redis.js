@@ -21,7 +21,6 @@ if(!REDIS_HOST || !REDIS_PORT){
     console.warn('REDIS_HOST or REDIS_PORT not set. Redis client may fail to connect.');
 }
 
-console.log(process.env.REDIS_PORT);
 const client = createClient({
   username: REDIS_USERNAME || undefined,
   password: REDIS_PASSWORD || undefined,

@@ -7,7 +7,6 @@ export const register = async (req,res,next)=>{
 
     try{
         const existing = await UserModel.findOne({email});
-        console.log('existing',existing)
         if(existing){
             return res.status(400).json({msg:'User already exists'});
         }
@@ -15,7 +14,6 @@ export const register = async (req,res,next)=>{
         const salt = await bcrypt.genSalt(10);
         const passwordHash = await bcrypt.hash(password,salt);
         const user = await UserModel.create({name,email,passwordHash});
-        console.log('user',user);
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '7d' });
 
         return res.status(201).json({token,user:{id:user._id, name:user.name, email:user.email}})

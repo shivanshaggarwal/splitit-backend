@@ -2,7 +2,6 @@ import { request } from "express";
 import { UserModel } from "../models/userModel.js";
 
 export const sendRequest = async (req, res) => {
-  console.log("body", req.body);
   const { email } = req.body;
   if (!email) return res.status(400).json({ msg: "Email is required" });
 

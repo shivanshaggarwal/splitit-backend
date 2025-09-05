@@ -56,7 +56,6 @@ export const getGroupDetails = async (req, res) => {
 export const addGroupMember = async (req, res) => {
   const { email } = req.body;
   const {groupId} = req.params;
-  console.log(59 ,groupId);
 
   try {
     const group = await GroupModel.findById(groupId);
@@ -77,7 +76,7 @@ export const addGroupMember = async (req, res) => {
     group.members.push(userToAdd._id);
     await group.save();
     const updatedGroup = await GroupModel.findById(group._id).populate('members', 'name email');
-    console.log(updatedGroup);
+
     res.json({ msg: 'Member added successfully', updatedGroup });
   } catch (err) {
     res.status(500).json({ msg: 'Server error', error: err.message });
@@ -116,7 +115,6 @@ export const removeGroupMember = async (req, res) => {
     await group.save();
 
     const updatedGroup = await GroupModel.findById(group._id).populate('members', 'name email');
-    console.log(updatedGroup);
     res.json({ msg: 'Member removed successfully', updatedGroup });
   } catch (err) {
     res.status(500).json({ msg: 'Server error', error: err.message });
