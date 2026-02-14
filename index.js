@@ -15,8 +15,7 @@ const app = express();
 const corsOptions = {
   origin: [
     'http://localhost:3000',
-    'https://split-it-new.netlify.app',
-    'https://split-it-new.netlify.ap/p'
+    'https://split-it-new.netlify.app'
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
